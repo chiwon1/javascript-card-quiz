@@ -8,7 +8,7 @@
 
 ![Sample Quiz](/images/sample.png)
 
-데이터를 이용해 UI작업을 하는 연습과 함께 퀴즈 내용에 나온 문제들도 마스터해보세요 👨🏻‍🏫
+데이터를 이용해 UI작업을 하는 연습과 함께 퀴즈 내용에 나온 문제들도 마스터해보세요 🎖
 
 - **반드시 아래 Setup과 Development 부분을 읽어보세요.**
 - 과제를 시작하는 방법과 제출하는 방법은 [과제 관련 안내](https://www.notion.so/vanillacoding/9b7bb71aa95f4bd4906e7496d6ad8db3) 페이지에서 찾을 수 있습니다.
@@ -28,7 +28,7 @@ $ npm install
 $ npm run dev
 # Visit http://localhost:1234 from your browser (Chrome)
 ```
-ℹ️[npm custom script](https://stackoverflow.com/questions/36433461/how-do-i-add-a-custom-script-to-my-package-json-file-that-runs-a-javascript-file)
+ℹ️ [npm custom script](https://stackoverflow.com/questions/36433461/how-do-i-add-a-custom-script-to-my-package-json-file-that-runs-a-javascript-file)
 
 - HTML: `index.html`를 수정하세요.
 - JS: `/app/index.js`를 수정하세요.
