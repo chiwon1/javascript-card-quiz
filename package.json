@@ -1,0 +1,14 @@
+{
+  "name": "card-quiz",
+  "version": "1.0.0",
+  "description": "JavaScript Card Quiz",
+  "scripts": {
+    "dev": "parcel index.html"
+  },
+  "keywords": [],
+  "author": "Ken Huh <ken@vanillacoding.co>",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
