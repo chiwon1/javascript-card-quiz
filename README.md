@@ -28,13 +28,23 @@ $ npm install
 $ npm run dev
 # Visit http://localhost:1234 from your browser (Chrome)
 ```
+
 ℹ️ [npm custom script](https://stackoverflow.com/questions/36433461/how-do-i-add-a-custom-script-to-my-package-json-file-that-runs-a-javascript-file)
 
 - HTML: `index.html`를 수정하세요.
 - JS: `/app/index.js`를 수정하세요.
-- CSS: `/assets/styles/index.css`를 수정하세요.
-- Images: `/assets/images` 디렉토리를 이용하세요.
+- CSS: `/styles/index.css`를 수정하세요.
+- Images: `/images` 디렉토리를 이용하세요.
 
 ## TODO
 
 스타일이나 아래에 명시되지 않은 기능은 재량껏 구현해주시기 바랍니다. 애니메이션이나 시각적인 효과는 중요하지 않지만, 시간이 되면 시도해보세요.
+
+- [ ] 퀴즈를 시작할 수 있는 버튼이 보여야 합니다.
+- [ ] 사용자가 시작 버튼을 눌렀을 경우, `quiz.json`의 첫 문제부터 카드 형식으로 보여주어야 합니다.
+- [ ] 사용자가 현재까지 맞춘 정답의 갯수와 남은 문제의 숫자를 화면에 표기해주어야 합니다.
+- [ ] 문제에 따라 예제 코드가 있다면, 함께 보여주어야 합니다.
+- [ ] 문제의 정답을 맞출 경우, 정답이라고 표기해주고 다음 문제로 진행할 수 있는 버튼이 나타나야 합니다.
+- [ ] 문제의 정답을 맞추지 못했을 경우, 정답을 표기해주고 다음 문제로 진행할 수 있는 버튼이 나타나야 합니다.
+- [ ] 마지막 문제가 끝났을 경우, 수고했다는 메시지와 함께 재시작 버튼이 나타나야 합니다.
+- [ ] 재시작 버튼을 눌렀을 경우, 다시 처음부터 위 단계를 반복할 수 있어야 합니다.
