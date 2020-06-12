@@ -16,6 +16,8 @@
 
 ## Setup (사전 설치)
 
+[안내 영상](https://www.notion.so/vanillacoding/npm-install-npm-start-7105975df74a4d5fa8f30defedfe8e4a)
+
 Install dependencies
 
 ```sh
@@ -24,17 +26,32 @@ $ npm install
 
 ## Development (작업 방법)
 
+[안내 영상](https://www.notion.so/vanillacoding/npm-install-npm-start-7105975df74a4d5fa8f30defedfe8e4a)
+
 ```sh
-$ npm run dev
+$ npm start
 # Visit http://localhost:1234 from your browser (Chrome)
 ```
-
-ℹ️ [npm custom script](https://stackoverflow.com/questions/36433461/how-do-i-add-a-custom-script-to-my-package-json-file-that-runs-a-javascript-file)
 
 - HTML: `index.html`를 수정하세요.
 - JS: `/app/index.js`를 수정하세요.
 - CSS: `/styles/index.css`를 수정하세요.
 - Images: `/images` 디렉토리를 이용하세요.
+
+### 과제에서 자바스크립트로 이미지 작업하는 방법
+
+아래 방법은 자바스크립트를 이용하는 상황에만 적용되며, HTML에서 이미지를 추가하는 것은 기존에 알고 계시는 것처럼 진행하시면 됩니다.
+
+```js
+// 이미지 경로에 따라 아래와 같은 구문 삽입
+// `yourImageName` 부분은 사용하는 이미지의 이름을 지어서 넣어주세요.
+import yourImageName from '../images/vc.png';
+
+var $something = document.querySelector(".main-logo");
+
+// 이렇게 이미지 요소의 `src` 속성을 추가할 수 있습니다.
+$something.src = yourImageName;
+```
 
 ## TODO
 
