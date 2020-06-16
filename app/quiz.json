@@ -39,7 +39,7 @@
     "question": "예제 코드의 결과값은 무엇입니까?",
     "choices": ["true", "false"],
     "code": "null === null",
-    "correctAnswer": 1
+    "correctAnswer": 0
   },
   {
     "question": "예제 코드의 결과값은 무엇입니까?",
