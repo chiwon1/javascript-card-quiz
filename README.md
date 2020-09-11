@@ -1,6 +1,6 @@
 ![JavaScript Card Quiz](/images/card-quiz.png)
 
-> 🚨과제를 시작하는 방법과 제출하는 방법은 [과제 관련 안내](https://www.notion.so/vanillacoding/9b7bb71aa95f4bd4906e7496d6ad8db3) 페이지에서 찾을 수 있습니다.
+> 🚨과제를 시작하는 방법과 제출하는 방법은 노션의 프렙 가이드 페이지에서 찾을 수 있습니다.
 
 # JavaScript Card Quiz Project
 
@@ -11,12 +11,10 @@
 데이터를 이용해 UI작업을 하는 연습과 함께 퀴즈 내용에 나온 문제들도 마스터해보세요 🎖
 
 - **반드시 아래 Setup과 Development 부분을 읽어보세요.**
-- 과제를 시작하는 방법과 제출하는 방법은 [과제 관련 안내](https://www.notion.so/vanillacoding/9b7bb71aa95f4bd4906e7496d6ad8db3) 페이지에서 찾을 수 있습니다.
+- 과제를 시작하는 방법과 제출하는 방법은 노션의 프렙 가이드 페이지에서 찾을 수 있습니다.
 - 상세 요구 사항은 아래 TODO 파트를 참고하세요.
 
 ## Setup (사전 설치)
-
-[안내 영상](https://www.notion.so/vanillacoding/npm-install-npm-start-7105975df74a4d5fa8f30defedfe8e4a)
 
 Install dependencies
 
@@ -25,8 +23,6 @@ $ npm install
 ```
 
 ## Development (작업 방법)
-
-[안내 영상](https://www.notion.so/vanillacoding/npm-install-npm-start-7105975df74a4d5fa8f30defedfe8e4a)
 
 ```sh
 $ npm start
