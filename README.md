@@ -41,7 +41,7 @@ $ npm start
 ```js
 // 이미지 경로에 따라 아래와 같은 구문 삽입
 // `yourImageName` 부분은 사용하는 이미지의 이름을 지어서 넣어주세요.
-import yourImageName from '../images/vc.png';
+import yourImageName from "../images/vc.png";
 
 var $something = document.querySelector(".main-logo");
 
