@@ -2,6 +2,7 @@ import data from "./quiz.json";
 
 const $startButton = document.querySelector(".start-button");
 const $nextButton = document.querySelector(".next-button");
+const $questionBoard = document.querySelector(".question-board");
 const $question = document.querySelector(".question");
 const $exampleCode = document.querySelector(".example-code");
 const $answerBoard = document.querySelector(".answer-board");
@@ -24,6 +25,8 @@ $nextButton.addEventListener("click", setNextQuestion)
 
 function startQuiz() {
   resetQuestionAndAnswers();
+
+  $questionBoard.classList.add("shadow");
 
   $timeRemaining.classList.remove("hide");
 
@@ -160,7 +163,3 @@ function islastQuestion() {
     $startButton.classList.remove("hide");
   }
 }
-
-
-
-
