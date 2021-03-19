@@ -56,11 +56,11 @@ h1 {
 }
 
 .question {
-  line-height: 20px;
-  padding: 20px;
+  line-height: 40px;
+  padding: 40px;
   text-align: center;
   height: 20px;
-  font-size: 12pt;
+  font-size: 15pt;
 }
 
 .example-code {
@@ -85,10 +85,10 @@ h1 {
 
 .result {
   text-align: center;
-  height: 80px;
-  font-size: 17pt;
+  height: 100px;
+  font-size: 16pt;
   white-space: pre;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .button-board {

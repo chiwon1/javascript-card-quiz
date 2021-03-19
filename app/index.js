@@ -82,14 +82,14 @@ function countdown() {
 }
 
 function timeOut() {
-  $nextButton.classList.remove("hide");
-
   $result.textContent = "Time Out!";
 
   for (let i = 0; i < $answerButtons.length; i++) {
     const button = $answerButtons[i];
     button.removeEventListener("click", selectAnswer)
   }
+
+  islastQuestion();
 }
 
 function setQuestion() {
@@ -145,21 +145,21 @@ function selectAnswer (event) {
       button.removeEventListener("click", selectAnswer)
     }
 
+    islastQuestion();
+}
+
+function islastQuestion() {
   if (currentQuestionNumber < data.length - 1) {
     $nextButton.classList.remove("hide");
   } else {
     $result.textContent += `
-    Final score : ${score} / ${data.length}`;
+    Final score : ${score} / ${data.length}
+    Well done!`;
     $nextButton.classList.add("hide");
     $startButton.textContent = "Restart";
     $startButton.classList.remove("hide");
   }
 }
-
-
-
-
-
 
 
 
