@@ -11,25 +11,22 @@ const $result = document.querySelector(".result");
 const $questionNumber = document.querySelector(".question-number");
 const $timeRemaining = document.querySelector(".time-remaining");
 const $score = document.querySelector(".score");
-const timeLimit = 5;
+const TIME_LIMIT = 5;
 
-let userAnswer;
-let currentQuestionNumber;
-let correctAnswer;
-let score;
-let timeLeft = timeLimit;
-let timerId;
+let currentQuestionNumber = 0;
+let correctAnswer = 0;
+let score = 0;
+let timeLeft = 0;
+let intervalId = null;
 
-$startButton.addEventListener("click", startQuiz)
-$nextButton.addEventListener("click", setNextQuestion)
+$startButton.addEventListener("click", startQuiz);
+$nextButton.addEventListener("click", setNextQuestion);
 
 function startQuiz() {
   resetQuestionAndAnswers();
 
   $questionBoard.classList.add("shadow");
-
   $timeRemaining.classList.remove("hide");
-
   $startButton.classList.add("hide");
 
   currentQuestionNumber = 0;
@@ -37,14 +34,13 @@ function startQuiz() {
   score = 0;
 
   setTopboard();
-
   setQuestion();
 
   $answerBoard.classList.remove("hide");
 
   for (let i = 0; i < $answerButtons.length; i++) {
     const button = $answerButtons[i];
-    button.addEventListener("click", selectAnswer)
+    button.addEventListener("click", selectAnswer);
   }
 }
 
@@ -68,16 +64,16 @@ function setTopboard() {
 }
 
 function setTimer() {
-  clearInterval(timerId);
-  timeLeft = timeLimit;
+  clearInterval(intervalId);
+  timeLeft = TIME_LIMIT;
   $timeRemaining.textContent = `${timeLeft} sec`;
-  timerId = setInterval(countdown, 1000);
+  intervalId = setInterval(countdown, 1000);
 }
 
 function countdown() {
   if (timeLeft == 0) {
     timeOut();
-    clearInterval(timerId);
+    clearInterval(intervalId);
   } else {
     timeLeft--;
     $timeRemaining.textContent = `${timeLeft} sec`;
@@ -92,18 +88,16 @@ function timeOut() {
     button.removeEventListener("click", selectAnswer)
   }
 
-  islastQuestion();
+  isLastQuestion();
 }
 
 function setQuestion() {
   $question.textContent = data[currentQuestionNumber].question;
-  if (data[currentQuestionNumber] !== null) {
-    $exampleCode.textContent = data[currentQuestionNumber].code;
-  }
+  $exampleCode.textContent = data[currentQuestionNumber].code;
+
   for (let i = 0; i < data[currentQuestionNumber].choices.length; i++) {
     $answerButtons[i].textContent = `(${i + 1}) ${data[currentQuestionNumber].choices[i]}`;
   }
-  correctAnswer = data[currentQuestionNumber].correctAnswer;
 
   for (let i = 0; i < $answerButtons.length; i++) {
     if (!$answerButtons[i].textContent) {
@@ -116,31 +110,30 @@ function setNextQuestion() {
   currentQuestionNumber++;
 
   resetQuestionAndAnswers();
-
   setTopboard();
-
   setQuestion();
 
   $nextButton.classList.add("hide");
 
   for (let i = 0; i < $answerButtons.length; i++) {
     const button = $answerButtons[i];
-    button.addEventListener("click", selectAnswer)
+    button.addEventListener("click", selectAnswer);
   }
 }
 
-function selectAnswer (event) {
-  userAnswer = Number(event.target.id);
+function selectAnswer(event) {
+  correctAnswer = data[currentQuestionNumber].correctAnswer;
+  const userAnswer = Number(event.target.id);
+
   if (userAnswer === correctAnswer) {
     $result.textContent = "Correct!";
     score++;
     $score.textContent = `Score : ${score} / ${data.length}`;
   } else {
-    $result.textContent = `Wrong!
-    Correct Answer : (${correctAnswer + 1})`;
+    $result.textContent = `Wrong!\nCorrect Answer : (${correctAnswer + 1})`;
   }
 
-  clearInterval(timerId);
+  clearInterval(intervalId);
 
     //removeEventListener 외에 더 효율적인 방법이 있을까요? disable, onlick = null 등을 고려해보았으나, 이 방법이 최선인 듯 하여 우선 이렇게 작성하였습니다.
     for (let i = 0; i < $answerButtons.length; i++) {
@@ -148,10 +141,10 @@ function selectAnswer (event) {
       button.removeEventListener("click", selectAnswer)
     }
 
-    islastQuestion();
+    isLastQuestion();
 }
 
-function islastQuestion() {
+function isLastQuestion() {
   if (currentQuestionNumber < data.length - 1) {
     $nextButton.classList.remove("hide");
   } else {
