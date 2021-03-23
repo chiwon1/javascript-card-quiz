@@ -21,20 +21,25 @@
           <div class="time-remaining hide"></div>
           <div class="score"></div>
         </div>
-        <div class="question-board">
+        <div class="question-board hide">
           <div class="question"></div>
           <div class="example-code"></div>
         </div>
         <div class="answer-board hide">
-          <button class="answer-buttons" id=0></button>
-          <button class="answer-buttons" id=1></button>
-          <button class="answer-buttons" id=2></button>
-          <button class="answer-buttons" id=3></button>
+          <button class="answer-buttons" data-answer-number=0></button>
+          <button class="answer-buttons" data-answer-number=1></button>
+          <button class="answer-buttons" data-answer-number=2></button>
+          <button class="answer-buttons" data-answer-number=3></button>
         </div>
-        <div class="result"></div>
+        <div class="result-board">
+          <div class="result"></div>
+          <div class="final-score"></div>
+          <div class="finish-message"></div>
+        </div>
         <div class="button-board">
           <button type="button" class="start-button">Start</button>
           <button type="button" class="next-button hide">Next</button>
+          <button type="button" class="restart-button hide">Restart</button>
         </div>
       </div>
     </section>

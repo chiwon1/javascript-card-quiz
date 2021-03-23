@@ -1,17 +1,23 @@
+"use strict";
+
 import data from "./quiz.json";
 
 const $startButton = document.querySelector(".start-button");
 const $nextButton = document.querySelector(".next-button");
+const $restartButton = document.querySelector(".restart-button");
 const $questionBoard = document.querySelector(".question-board");
 const $question = document.querySelector(".question");
 const $exampleCode = document.querySelector(".example-code");
 const $answerBoard = document.querySelector(".answer-board");
 const $answerButtons = document.querySelectorAll(".answer-buttons");
 const $result = document.querySelector(".result");
+const $finalSocre = document.querySelector(".final-score");
+const $finishMessage = document.querySelector(".finish-message");
 const $questionNumber = document.querySelector(".question-number");
 const $timeRemaining = document.querySelector(".time-remaining");
 const $score = document.querySelector(".score");
 const TIME_LIMIT = 5;
+const FINISH_MESSAGE = "Well done!";
 
 let currentQuestionNumber = 0;
 let correctAnswer = 0;
@@ -21,32 +27,32 @@ let intervalId = null;
 
 $startButton.addEventListener("click", startQuiz);
 $nextButton.addEventListener("click", setNextQuestion);
+$restartButton.addEventListener("click", startQuiz);
+
+function initialize() {
+  currentQuestionNumber = 0;
+  score = 0;
+  $finalSocre.textContent = "";
+  $finishMessage.textContent = "";
+}
 
 function startQuiz() {
+  initialize();
   resetQuestionAndAnswers();
-
-  $questionBoard.classList.add("shadow");
-  $timeRemaining.classList.remove("hide");
-  $startButton.classList.add("hide");
-
-  currentQuestionNumber = 0;
-
-  score = 0;
-
   setTopboard();
   setQuestion();
 
+  $questionBoard.classList.remove("hide");
+  $timeRemaining.classList.remove("hide");
+  $startButton.classList.add("hide");
+  $restartButton.classList.add("hide");
   $answerBoard.classList.remove("hide");
 
-  for (let i = 0; i < $answerButtons.length; i++) {
-    const button = $answerButtons[i];
-    button.addEventListener("click", selectAnswer);
-  }
+  $answerBoard.addEventListener("click", selectAnswer);
 }
 
 function resetQuestionAndAnswers() {
   $exampleCode.textContent = null;
-
   $result.textContent = "";
 
   for (let i = 0; i < $answerButtons.length; i++) {
@@ -56,10 +62,9 @@ function resetQuestionAndAnswers() {
 }
 
 function setTopboard() {
-  $questionNumber.textContent = `Question ${currentQuestionNumber + 1} of ${data.length}`;
-
   setTimer();
 
+  $questionNumber.textContent = `Question ${currentQuestionNumber + 1} of ${data.length}`;
   $score.textContent = `Score : ${score} / ${data.length}`;
 }
 
@@ -71,22 +76,18 @@ function setTimer() {
 }
 
 function countdown() {
-  if (timeLeft == 0) {
-    timeOut();
-    clearInterval(intervalId);
-  } else {
+  if (timeLeft > 0) {
     timeLeft--;
     $timeRemaining.textContent = `${timeLeft} sec`;
+  } else {
+    timeOut();
+    clearInterval(intervalId);
   }
 }
 
 function timeOut() {
   $result.textContent = "Time Out!";
-
-  for (let i = 0; i < $answerButtons.length; i++) {
-    const button = $answerButtons[i];
-    button.removeEventListener("click", selectAnswer)
-  }
+  $answerBoard.removeEventListener("click", selectAnswer);
 
   isLastQuestion();
 }
@@ -115,15 +116,12 @@ function setNextQuestion() {
 
   $nextButton.classList.add("hide");
 
-  for (let i = 0; i < $answerButtons.length; i++) {
-    const button = $answerButtons[i];
-    button.addEventListener("click", selectAnswer);
-  }
+  $answerBoard.addEventListener("click", selectAnswer);
 }
 
 function selectAnswer(event) {
   correctAnswer = data[currentQuestionNumber].correctAnswer;
-  const userAnswer = Number(event.target.id);
+  const userAnswer = Number(event.target.dataset.answerNumber);
 
   if (userAnswer === correctAnswer) {
     $result.textContent = "Correct!";
@@ -135,24 +133,18 @@ function selectAnswer(event) {
 
   clearInterval(intervalId);
 
-    //removeEventListener 외에 더 효율적인 방법이 있을까요? disable, onlick = null 등을 고려해보았으나, 이 방법이 최선인 듯 하여 우선 이렇게 작성하였습니다.
-    for (let i = 0; i < $answerButtons.length; i++) {
-      const button = $answerButtons[i];
-      button.removeEventListener("click", selectAnswer)
-    }
+  $answerBoard.removeEventListener("click", selectAnswer);
 
-    isLastQuestion();
+  isLastQuestion();
 }
 
 function isLastQuestion() {
   if (currentQuestionNumber < data.length - 1) {
     $nextButton.classList.remove("hide");
   } else {
-    $result.textContent += `
-    Final score : ${score} / ${data.length}
-    Well done!`;
+    $finalSocre.textContent = `Final score : ${score} / ${data.length}`;
+    $finishMessage.textContent = FINISH_MESSAGE;
     $nextButton.classList.add("hide");
-    $startButton.textContent = "Restart";
-    $startButton.classList.remove("hide");
+    $restartButton.classList.remove("hide");
   }
 }

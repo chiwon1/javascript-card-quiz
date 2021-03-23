@@ -29,6 +29,12 @@ h1 {
   font-size: 15pt;
 }
 
+.question-board {
+  border: solid 1px black;
+  border-radius: 10px;
+  box-shadow: 0 0 5px;
+}
+
 .question-number {
   width : 200px;
   height: 25px;
@@ -84,12 +90,27 @@ h1 {
   height: 50px;
 }
 
+.result-board {
+  height: 85;
+}
+
+
 .result {
   text-align: center;
-  height: 10%;
+  height: 45px;
   font-size: 14pt;
   white-space: pre;
   margin-top: 15px;
+}
+
+.final-score, .finish-message {
+  text-align: center;
+  height: 20px;
+  font-size: 18pt;
+}
+
+.finish-message {
+  margin-top: 5px;
 }
 
 .button-board {
@@ -100,19 +121,20 @@ h1 {
   margin-top: 5px;
 }
 
-.start-button, .next-button {
+.start-button, .next-button, .restart-button {
   width: 130px;
   height: 35px;
   font-size: 20pt;
-  margin-top: 40px;
+}
+
+.start-button {
+  margin-top: 100px;
+}
+
+.next-button, .restart-button {
+  margin-top: 10px;
 }
 
 .hide {
   display: none;
-}
-
-.shadow {
-  border: solid 1px black;
-  border-radius: 10px;
-  box-shadow: 0 0 5px;
 }
